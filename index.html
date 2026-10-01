@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" class="js-enabled">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4b2e83">
+  <meta name="description" content="A two-minute Women in STEM digital careers code-breaking challenge for local government careers fairs.">
+  <title>Break the Code — Women in STEM Digital Detective</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="generic-header">
+    <div class="width-container generic-header__inner">
+      <a class="service-name" href="./" aria-label="Break the Code home">
+        <span class="service-mark" aria-hidden="true">●</span>
+        <span>Local Government Digital Careers</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="service-bar">
+    <div class="width-container">
+      <strong>Break the Code</strong>
+      <span class="tag">CAREERS FAIR</span>
+    </div>
+  </div>
+
+  <main class="width-container main-wrapper" id="main-content" tabindex="-1">
+    <noscript>
+      <div class="error-summary">
+        <h2>JavaScript is needed for this activity</h2>
+        <p>Please enable JavaScript or ask a member of the team for help.</p>
+      </div>
+    </noscript>
+
+    <section id="screen-start" class="screen" aria-labelledby="start-title">
+      <p class="eyebrow">2-minute digital detective challenge</p>
+      <h1 id="start-title">Can you break the code?</h1>
+      <p class="lead">A message from a council digital team has been scrambled. Find the secret key and unlock the service they are working on.</p>
+
+      <div class="inset-text">
+        <strong>Your clue:</strong><br>
+        Science. Technology. Engineering. Maths.<br>
+        <strong>Who belongs here?</strong>
+      </div>
+
+      <p>You do not need to know any coding or cyber security to play.</p>
+
+      <button class="button button--start" id="start-button" type="button">
+        Start challenge
+        <span aria-hidden="true">›</span>
+      </button>
+
+      <details class="details">
+        <summary>What is this activity about?</summary>
+        <div class="details__text">
+          <p>Digital teams use problem solving, technology and creativity to improve everyday public services. This quick challenge introduces some of those skills and celebrates women in STEM.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="screen-key" class="screen" hidden aria-labelledby="key-title">
+      <div class="status-row" aria-live="polite">
+        <span><strong>Step 1 of 2</strong> — find the key</span>
+        <span class="timer" id="timer">02:00</span>
+      </div>
+
+      <h1 id="key-title">Find the secret key</h1>
+      <p>A digital agent recovered this encrypted message:</p>
+
+      <div class="evidence-panel" aria-label="Encrypted message">
+        <span class="evidence-panel__label">ENCRYPTED MESSAGE</span>
+        <code id="cipher-text">LOADING</code>
+      </div>
+
+      <div class="clue-card">
+        <h2>Your clue</h2>
+        <p>Science. Technology. Engineering. Maths.</p>
+        <p class="clue-question">Who belongs here?</p>
+      </div>
+
+      <form id="key-form" novalidate>
+        <div class="form-group" id="key-form-group">
+          <label class="label label--large" for="key-input">Enter the secret key</label>
+          <div class="hint" id="key-hint">Spaces and capital letters do not matter.</div>
+          <p class="error-message" id="key-error" hidden>
+            <span class="visually-hidden">Error:</span>
+            That key did not unlock the message. Try the clue again or ask for a hint.
+          </p>
+          <input class="input input--width-20" id="key-input" name="key" type="text"
+                 autocomplete="off" autocapitalize="characters" spellcheck="false"
+                 aria-describedby="key-hint">
+        </div>
+
+        <button class="button" type="submit">Try the key</button>
+        <button class="button button--secondary" id="hint-button" type="button">Give me a hint</button>
+      </form>
+
+      <div id="hint-panel" class="notification notification--hint" hidden aria-live="polite">
+        <strong>Hint</strong>
+        <p id="hint-text"></p>
+      </div>
+
+      <button class="link-button" id="restart-from-key" type="button">Restart challenge</button>
+    </section>
+
+    <section id="screen-decode" class="screen" hidden aria-labelledby="decode-title">
+      <div class="status-row" aria-live="polite">
+        <span><strong>Step 2 of 2</strong> — decode the message</span>
+        <span class="timer" id="timer-decode">02:00</span>
+      </div>
+
+      <div class="success-summary" tabindex="-1" id="key-success">
+        <h2>Key accepted</h2>
+        <p><strong>WOMANINSTEM</strong> unlocked the decoder.</p>
+      </div>
+
+      <h1 id="decode-title">Run the digital decoder</h1>
+      <p>The secret key is loaded. One click will run the decoder against the encrypted message.</p>
+
+      <div class="tool-panel">
+        <div>
+          <span class="tool-panel__label">DIGITAL TOOLKIT</span>
+          <h2>Message decoder</h2>
+          <p>Key: <code>WOMANINSTEM</code></p>
+        </div>
+        <button class="button" id="decode-button" type="button">Decode message</button>
+      </div>
+
+      <div class="evidence-panel evidence-panel--small">
+        <span class="evidence-panel__label">ENCRYPTED MESSAGE</span>
+        <code id="cipher-text-decode">LOADING</code>
+      </div>
+    </section>
+
+    <section id="screen-success" class="screen" hidden aria-labelledby="success-title">
+      <div class="success-summary success-summary--large" tabindex="-1" id="mission-success">
+        <h1 id="success-title">Code broken!</h1>
+        <p>You recovered the council service message.</p>
+      </div>
+
+      <div class="decoded-panel">
+        <span class="decoded-panel__label">DECODED MESSAGE</span>
+        <p id="plain-text">REPORT A POTHOLE</p>
+      </div>
+
+      <p class="result-time" id="result-time"></p>
+
+      <h2>You just used STEM skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><strong>Problem solving</strong><span>Work out what is happening</span></div>
+        <div class="skill-card"><strong>Pattern spotting</strong><span>Notice clues in information</span></div>
+        <div class="skill-card"><strong>Digital tools</strong><span>Use technology to solve a task</span></div>
+        <div class="skill-card"><strong>Curiosity</strong><span>Try, test and learn</span></div>
+      </div>
+
+      <div class="career-message">
+        <p class="career-message__lead">Women belong in every STEM career.</p>
+        <p>Council digital teams include software developers, data analysts, cyber specialists, UX designers, content designers, product managers and many more roles.</p>
+      </div>
+
+      <button class="button button--start" id="new-mission-button" type="button">
+        New mission
+        <span aria-hidden="true">›</span>
+      </button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="width-container">
+      <p><strong>Local Government Digital Careers</strong></p>
+      <p>This is a fictional careers-fair activity. It does not use real resident data or council systems.</p>
+    </div>
+  </footer>
+</body>
+</html>
